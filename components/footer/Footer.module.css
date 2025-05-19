@@ -1,0 +1,27 @@
+.footerPage {
+  background-color: #3b3a39;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.text {
+  margin: 0;
+  font-size: 14px;
+}
+.nav {
+  margin-top: 10px;
+}
+.link {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
