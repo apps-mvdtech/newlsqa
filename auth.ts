@@ -1,8 +1,5 @@
 import NextAuth, { type DefaultSession } from "next-auth";
-import { ZodError } from "zod";
-import { signInSchema } from "./lib/zod";
 import Credentials from "next-auth/providers/credentials";
-import { showAlertDialog } from "./components/utilities/ui";
 
 declare module "next-auth" {
   interface User {

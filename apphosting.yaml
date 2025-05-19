@@ -27,3 +27,5 @@ env:
     value: CseEY45MMTts7qrsNq8jbDI/u9XKHuh5uoN5R+qSO84=
   - variable: NEXT_PUBLIC_SERVER_URL
     value: https://lsqaderes.mvdtech.com
+  - variable: AUTH_TRUST_HOST
+    value: true
