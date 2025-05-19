@@ -25,10 +25,5 @@ runConfig:
 env:
   - variable: AUTH_SECRET
     value: CseEY45MMTts7qrsNq8jbDI/u9XKHuh5uoN5R+qSO84=
-    availability:
-      - BUILD
   - variable: NEXT_PUBLIC_SERVER_URL
     value: https://lsqaderes.mvdtech.com
-    availability:
-      - BUILD
-      - RUNTIME
