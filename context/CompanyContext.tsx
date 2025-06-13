@@ -10,9 +10,9 @@ import {
 } from "react";
 import { useSession } from "next-auth/react";
 import { Empresa, ServerRepository, Contacto } from "../services/domain";
-import { Spinner } from "../components/utilities/Spinner";
+import { showAlertDialog } from "../components/utilities/ui";
 // Crear el contexto
-const CompanyContext = createContext<CompanyContextInterface | null>(null);
+const CompanyContext = createContext<CompanyContextInterface>(null);
 
 // Crear un hook personalizado para acceder al contexto
 export interface CompanyContextInterface {
@@ -310,16 +310,19 @@ export const CompanyProvider = ({ children }: { children: ReactNode }) => {
       }
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-
       const a = document.createElement("a");
       a.href = url;
-      a.download = etiquetaNombre; // Cambia según el tipo de archivo
+      a.download = etiquetaNombre;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
-      //return response.json();
     } catch (error) {
+      showAlertDialog({
+        title: "Atención",
+        content:
+          "Ocurrió un error al descargar la etiqueta. Por favor, intente nuevamente. Si el problema persiste, comuníquese con el administrador.",
+      });
       throw error;
     }
   }
@@ -382,7 +385,7 @@ export const CompanyProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  const context: ServerRepository = {
+  const context = {
     getEmpresa,
     updateEmpresa,
     getEmpresasContactos,

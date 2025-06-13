@@ -20,6 +20,18 @@
   /* border-radius: 4px; */
 }
 
+.btnDownload {
+  margin-right: 2px;
+}
+
+.hideBtn {
+  display: none;
+}
+
+.showBtn {
+  display: "";
+}
+
 .searchButton {
   background-color: #68c3c0;
   color: white;
@@ -135,6 +147,6 @@
 }
 
 .downloadButton {
-  margin-left: 2px;
+  margin-left: 5px;
   cursor: pointer;
 }
