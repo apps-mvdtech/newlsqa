@@ -12,7 +12,7 @@ import { useSession } from "next-auth/react";
 import { Empresa, ServerRepository, Contacto } from "../services/domain";
 import { showAlertDialog } from "../components/utilities/ui";
 // Crear el contexto
-const CompanyContext = createContext<CompanyContextInterface>(null);
+const CompanyContext = createContext<CompanyContextInterface | null>(null);
 
 // Crear un hook personalizado para acceder al contexto
 export interface CompanyContextInterface {
