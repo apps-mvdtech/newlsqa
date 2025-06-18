@@ -7,10 +7,10 @@ import { ChangePasswordDialog } from "../user/ChangePasswordDialog";
 import { MenuEventArgs } from "@syncfusion/ej2-react-navigations";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import { useState } from "react";
 //import { signOut } from "../../auth";
-import bridgeLogoNegativoColor from '../../src/img/bridgeLogoNegativoColor.png';
+// import bridgeLogoNegativoColor from '../../src/img/bridgeLogoNegativoColor.png';
 
 
 export default function Header() {
@@ -65,12 +65,12 @@ export default function Header() {
         <div>
           <Link href={"/"}>
             <div className={styles.logo}>
-               <Image
+               {/* <Image
               src={bridgeLogoNegativoColor}
               alt="Bridge logo"
               width={100}
               height={50}
-              />
+              /> */}
             </div>
           </Link>
         </div>
