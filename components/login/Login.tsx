@@ -53,7 +53,7 @@ const Login = () => {
     password: string;
   }) {
     if (userId === "" || password === "") {
-      return "Debe ingresar Usuario y Contraseña";
+      return "Debe ingresar Usuario y Contraseña.";
     }
 
     return "";
