@@ -11,8 +11,8 @@ import { useState } from "react";
 import { Spinner } from "../utilities/Spinner";
 import styles from "./Login.module.css";
 import { showAlertDialog } from "../utilities/ui";
-// import Image from "next/image";
-// import bridgeLogoOriginal from '../../src/img/bridgeLogoOriginal.png';
+import Image from "next/image";
+import bridgeLogoOriginal from '../../public/bridgeLogoOriginal.png';
 
 
 
@@ -65,12 +65,12 @@ const Login = () => {
       
         <div className={styles.container}>
           <div className={styles.img}>
-              {/* <Image
+              <Image
               src={bridgeLogoOriginal}
               alt="Bridge logo"
               width={200}
               height={60}
-              /> */}
+              />
           </div>
           <h3 className={styles.title}>Iniciar Sesión</h3>
           <div className={styles.form}>
