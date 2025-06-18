@@ -20,8 +20,14 @@
   font-family: "Arial", sans-serif;
 }
 
+.img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
 .title {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: bold;
   color: #000;
   margin-bottom: 20px;
