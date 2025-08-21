@@ -40,9 +40,7 @@ export const useCompany = () => {
   return useContext(CompanyContext);
 };
 
-// Crear el proveedor de contexto
 export const CompanyProvider = ({ children }: { children: ReactNode }) => {
-  //const context = {};
   const { data: session, status } = useSession();
 
   useEffect(() => {}, [session]);
@@ -385,6 +383,70 @@ export const CompanyProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
+  async function downloadForm() {
+    const { accessToken } = session?.user ?? {};
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/Empresas/downloadFormulario`,
+        {
+          method: "GET",
+          cache: "no-cache",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: "application/json, application/octet-stream",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`Error HTTP ${response.status}`);
+      }
+
+      let blob: Blob;
+      blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Formulario.xlsx";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      return true;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  async function uploadForm(file) {
+    const { accessToken } = session?.user ?? {};
+    const formData = new FormData();
+    formData.append("file", file, file.name);
+
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/Empresas/uploadFormulario`,
+        {
+          method: "POST",
+          cache: "no-cache",
+          headers,
+          body: formData,
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Ocurrio un error");
+      }
+
+      //return response.json();
+    } catch (error) {
+      throw error;
+    }
+  }
+
   const context = {
     getEmpresa,
     updateEmpresa,
@@ -398,6 +460,8 @@ export const CompanyProvider = ({ children }: { children: ReactNode }) => {
     downloadEtiquetas,
     getLogo,
     uploadLogo,
+    downloadForm,
+    uploadForm,
   };
 
   return (

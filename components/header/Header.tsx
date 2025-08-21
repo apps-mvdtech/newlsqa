@@ -4,18 +4,19 @@ import styles from "../header/Header.module.css";
 import { actionLogout } from "../../actions/loginAction";
 import { showAlertDialog, showConfirmDialog } from "../utilities/ui";
 import { ChangePasswordDialog } from "../user/ChangePasswordDialog";
+import { DialogForm } from "../form/DialogForm";
 import { MenuEventArgs } from "@syncfusion/ej2-react-navigations";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 //import { signOut } from "../../auth";
- import bridgeLogoNegativoColor from '../../public/bridgeLogoNegativoColor.png';
-
+import bridgeLogoNegativoColor from "../../public/bridgeLogoNegativoColor.png";
 
 export default function Header() {
   const [showDialogChangePassword, setShowDialogChangePassword] =
     useState(false);
+  const [showDialogUploadForm, setShowDialogUploadForm] = useState(false);
 
   async function clickLogout() {
     try {
@@ -65,16 +66,25 @@ export default function Header() {
         <div>
           <Link href={"/"}>
             <div className={styles.logo}>
-               <Image
-              src={bridgeLogoNegativoColor}
-              alt="Bridge logo"
-              width={100}
-              height={50}
+              <Image
+                src={bridgeLogoNegativoColor}
+                alt="Bridge logo"
+                width={100}
+                height={50}
               />
             </div>
           </Link>
         </div>
         <nav className={styles.nav}>
+          <Link
+            href={"/"}
+            onClick={(e) => {
+              e.preventDefault();
+              setShowDialogUploadForm(true);
+            }}
+          >
+            <span>Formulario</span>
+          </Link>
           <Link href={"/profile"}>
             <span>Perfil</span>
           </Link>
@@ -97,6 +107,9 @@ export default function Header() {
               <ChangePasswordDialog
                 closeDialog={() => setShowDialogChangePassword(false)}
               />
+            )}
+            {showDialogUploadForm && (
+              <DialogForm closeDialog={() => setShowDialogUploadForm(false)} />
             )}
           </>
         </nav>

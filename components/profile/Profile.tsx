@@ -163,7 +163,8 @@ export default function Profile() {
             )}
 
             {enabled && (
-              <div className="upload_wrapper">
+              <div className="upload_wrapper" style={{ marginTop: "10px" }}>
+                <span>Modificar logo de la empresa</span>
                 <UploaderComponent
                   ref={(scope) => {
                     uploaderRef.current = scope;
