@@ -29,6 +29,10 @@ export function DialogForm({ closeDialog }: { closeDialog: () => void }) {
       try {
         const file = uploaderRef.current.filesData[0].rawFile;
         await uploadForm(file);
+        showAlertDialog({
+          title: "Atención",
+          content: "El formulario se actualizo correctamente",
+        });
         closeDialog();
       } catch (error) {
         showAlertDialog({
@@ -45,8 +49,7 @@ export function DialogForm({ closeDialog }: { closeDialog: () => void }) {
       beforeOpen={onBeforeOpen}
       header="Formulario"
       isModal={true}
-      width="400px"
-      height="300px"
+      width="550px"
       close={closeDialog}
       showCloseIcon={true}
     >
@@ -71,7 +74,8 @@ export function DialogForm({ closeDialog }: { closeDialog: () => void }) {
         <ButtonComponent
           style={{
             width: "100%",
-            marginTop: "20%",
+            marginTop: "50px",
+            marginBottom: "10px",
             background: "#68c3c0",
             color: "#fff",
             borderRadius: "4px",
