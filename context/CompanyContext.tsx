@@ -34,6 +34,8 @@ export interface CompanyContextInterface {
   ) => Promise<void>;
   getLogo: () => Promise<string | null>;
   uploadLogo: (file: File) => Promise<void>;
+  downloadForm: () => Promise<boolean | null>;
+  uploadForm: (file: File) => Promise<void>;
 }
 
 export const useCompany = () => {
@@ -384,34 +386,13 @@ export const CompanyProvider = ({ children }: { children: ReactNode }) => {
   }
 
   async function downloadForm() {
-    const { accessToken } = session?.user ?? {};
-
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/Empresas/downloadFormulario`,
-        {
-          method: "GET",
-          cache: "no-cache",
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            Accept: "application/json, application/octet-stream",
-          },
-        }
-      );
-      if (!response.ok) {
-        throw new Error(`Error HTTP ${response.status}`);
-      }
-
-      let blob: Blob;
-      blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Formulario.xlsx";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
+      const link = document.createElement("a");
+      link.href = "/api/downloadFormulario";
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
       return true;
     } catch (err) {
