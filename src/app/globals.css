@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "../../node_modules/@syncfusion/ej2/fluent.css";
+
+
 
 :root {
   --background: #ffffff;

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MainContainer } from "../../context/MainContainer";
 import { SessionAuthProvide } from "../../context/SessionProvide";
+
+import "../../node_modules/@syncfusion/ej2/fluent.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
